@@ -1,11 +1,8 @@
+<html>
+<head>
+<title>Physics Playground</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%234CAF50' opacity='0.8'/><circle cx='30' cy='30' r='20' fill='%23fff' opacity='0.6'/><circle cx='70' cy='60' r='25' fill='%23333' opacity='0.7'/></svg>">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-<script type="importmap">
-{
-  "imports": {
-    "config": "./config.js"
-  }
-}
-</script>
 <style>
 body { margin: 0; overflow: hidden; background: #1a1a1a; font-family: Arial, sans-serif; }
 #canvas { width: 100%; height: 100vh; }
@@ -23,24 +20,6 @@ body { margin: 0; overflow: hidden; background: #1a1a1a; font-family: Arial, san
     box-shadow: 0 4px 30px rgba(0,0,0,0.3);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.15);
-    transition: all 0.3s ease;
-}
-
-#controls:hover {
-    box-shadow: 0 6px 40px rgba(76, 175, 80, 0.25);
-    transform: translateY(-2px);
-}
-
-#fps {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.5);
-    color: #4CAF50;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-family: monospace;
 }
 
 #searchBox {
@@ -237,107 +216,6 @@ h3 {
     z-index: 999;
 }
 
-.tooltip {
-    position: absolute;
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    z-index: 1000;
-}
-
-.theme-toggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: rgba(30,30,30,0.7);
-    color: white;
-    border: none;
-    width: auto;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255,255,255,0.15);
-}
-
-.theme-toggle svg {
-    height: 20px;
-    width: 20px;
-    fill: white;
-}
-
-/* Dark theme is default */
-.light-theme {
-    background: #f5f5f5;
-}
-
-.light-theme #controls {
-    background: rgba(255,255,255,0.95);
-    color: #333;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-.light-theme h3 {
-    color: #2E7D32;
-}
-
-.light-theme #searchBox,
-.light-theme select,
-.light-theme #searchResults {
-    background: rgba(240,240,240,0.95);
-    color: #333;
-    border-color: rgba(0,0,0,0.1);
-}
-
-.light-theme .searchResult:hover {
-    background: rgba(76, 175, 80, 0.1);
-}
-
-.light-theme .theme-toggle {
-    background: rgba(240,240,240,0.7);
-    color: #333;
-}
-
-.light-theme .theme-toggle svg {
-    fill: #333;
-}
-
-.light-theme button {
-    background: linear-gradient(to bottom right, #2E7D32, #388E3C);
-}
-
-.particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.particle {
-    position: absolute;
-    background: rgba(76, 175, 80, 0.2);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
 @media (max-width: 768px) {
     #controls {
         width: 180px;
@@ -476,19 +354,8 @@ canvas:active {
     <div class="info">Hold mouse button to use effects</div>
 </div>
 <div id="canvas"></div>
-<div id="fps">FPS: 60</div>
-<button class="theme-toggle" onclick="toggleTheme()">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13h2c0.55,0,1-0.45,1-1s-0.45-1-1-1H2c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13h2c0.55,0,1-0.45,1-1 s-0.45-1-1-1h-2c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1S11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/>
-    </svg>
-</button>
-<div class="particles-container"></div>
-<div class="tooltip"></div>
 
-<script type="module">
-import * as config from 'config';
-
-const Engine = Matter.Engine,
+<script>const Engine = Matter.Engine,
   Render = Matter.Render,
   Runner = Matter.Runner,
   Bodies = Matter.Bodies,
@@ -498,7 +365,6 @@ const Engine = Matter.Engine,
   Body = Matter.Body,
   Vector = Matter.Vector,
   Vertices = Matter.Vertices;
-
 const PARTICLE_SIZE = 6;
 const LIQUID_DENSITY = 0.01;
 const LIQUID_FRICTION = 0.1;
@@ -506,20 +372,16 @@ const LIQUID_FRICTION_AIR = 0.0001;
 const LIQUID_RESTITUTION = 0.2;
 const STIFFNESS = 0.5;
 const DAMPING = 0.1;
-
 let hasSeenUpdateNotes = false;
-
 const engine = Engine.create({
   enableSleeping: true,
   constraintIterations: 2,
   positionIterations: 6,
   velocityIterations: 4
 });
-
 engine.world.gravity.y = 1.5;
 engine.world.gravity.scale = 0.002;
 engine.timing.timeScale = 1.0;
-
 const render = Render.create({
   element: document.querySelector("#canvas"),
   engine: engine,
@@ -530,11 +392,9 @@ const render = Render.create({
     background: '#1a1a1a'
   }
 });
-
 const runner = Runner.create();
 Runner.run(runner, engine);
 Render.run(render);
-
 const mouse = Mouse.create(render.canvas);
 let mouseConstraint = MouseConstraint.create(engine, {
   mouse: mouse,
@@ -550,11 +410,8 @@ let mouseConstraint = MouseConstraint.create(engine, {
     mask: 0xFFFFFFFF
   }
 });
-
 Composite.add(engine.world, mouseConstraint);
-
 render.mouse = mouse;
-
 const walls = [Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 30, window.innerWidth, 60, {
   isStatic: true,
   restitution: 0.4,
@@ -572,20 +429,16 @@ const walls = [Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 30, 
   restitution: 0.4,
   friction: 0.8
 })];
-
 Composite.add(engine.world, walls);
-
 function getRandomColor() {
   const colors = ['#f55', '#5f5', '#55f', '#ff5', '#f5f', '#5ff'];
   return colors[Math.floor(Math.random() * colors.length)];
 }
-
 function spawnObject() {
   const type = document.getElementById('objectSelect').value;
   const x = Math.random() * (window.innerWidth - 100) + 50;
   const y = Math.random() * (window.innerHeight - 100) + 50;
   let body;
-
   const defaultOptions = {
     restitution: 0.4,
     friction: 0.8,
@@ -594,7 +447,6 @@ function spawnObject() {
       fillStyle: getRandomColor()
     }
   };
-
   switch (type) {
     case 'circle':
       body = Bodies.circle(x, y, 25, defaultOptions);
@@ -831,16 +683,13 @@ function spawnObject() {
     default:
       body = Bodies.circle(x, y, 25, defaultOptions);
   }
-
   if (!body && type !== 'fire_source' && type !== 'lightning_bolt') {
     body = Bodies.circle(x, y, 25, defaultOptions);
   }
-
   if (body) {
     Composite.add(engine.world, body);
   }
 }
-
 function starVertices(size) {
   const points = [];
   for (let i = 0; i < 10; i++) {
@@ -853,7 +702,6 @@ function starVertices(size) {
   }
   return points;
 }
-
 function createGear(x, y, radius, teeth) {
   const vertices = [];
   for (let i = 0; i < teeth * 2; i++) {
@@ -871,7 +719,6 @@ function createGear(x, y, radius, teeth) {
     density: 0.001
   });
 }
-
 function createChain(x, y) {
   const group = Body.nextGroup(true);
   const links = 10;
@@ -897,7 +744,6 @@ function createChain(x, y) {
     previousBody = body;
   }
 }
-
 function createRope(x, y) {
   const group = Body.nextGroup(true);
   const length = 10;
@@ -924,7 +770,6 @@ function createRope(x, y) {
     previousBody = body;
   }
 }
-
 function createSpring(x, y) {
   const bodyA = Bodies.circle(x, y, 20, {
     render: {
@@ -949,7 +794,6 @@ function createSpring(x, y) {
   });
   Composite.add(engine.world, [bodyA, bodyB, constraint]);
 }
-
 function createPendulum(x, y) {
   const body = Bodies.circle(x, y, 20, {
     render: {
@@ -970,7 +814,6 @@ function createPendulum(x, y) {
   });
   Composite.add(engine.world, [body, pivot, constraint]);
 }
-
 function createSeesaw(x, y) {
   const bodyA = Bodies.circle(x - 50, y, 20, {
     render: {
@@ -1002,7 +845,6 @@ function createSeesaw(x, y) {
   });
   Composite.add(engine.world, [bodyA, bodyB, pivot, constraintA, constraintB]);
 }
-
 function createCar(x, y) {
   const body = Bodies.rectangle(x, y, 100, 20, {
     render: {
@@ -1033,7 +875,6 @@ function createCar(x, y) {
   });
   Composite.add(engine.world, [body, wheelA, wheelB, constraintA, constraintB]);
 }
-
 function createCube(x, y) {
   const body = Bodies.rectangle(x, y, 50, 50, {
     render: {
@@ -1042,7 +883,6 @@ function createCube(x, y) {
   });
   return body;
 }
-
 function createPyramid(x, y) {
   const vertices = [];
   vertices.push({
@@ -1064,7 +904,6 @@ function createPyramid(x, y) {
   });
   return body;
 }
-
 function createHammer(x, y) {
   const body = Bodies.rectangle(x, y, 20, 50, {
     render: {
@@ -1085,7 +924,6 @@ function createHammer(x, y) {
   Composite.add(engine.world, [body, head, constraint]);
   return body;
 }
-
 function createArrow(x, y) {
   const body = Bodies.rectangle(x, y, 10, 50, {
     render: {
@@ -1106,7 +944,6 @@ function createArrow(x, y) {
   Composite.add(engine.world, [body, head, constraint]);
   return body;
 }
-
 function createMagnet(x, y) {
   const body = Bodies.circle(x, y, 20, {
     render: {
@@ -1115,7 +952,6 @@ function createMagnet(x, y) {
   });
   return body;
 }
-
 function createFireParticle(x, y) {
   const colors = ['#ff4400', '#ff8800', '#ffaa00', '#ff0000'];
   const size = Math.random() * 6 + 2;
@@ -1143,7 +979,6 @@ function createFireParticle(x, y) {
   }, lifetime);
   return body;
 }
-
 function createCrystal(x, y) {
   const vertices = [];
   for (let i = 0; i < 6; i++) {
@@ -1160,7 +995,6 @@ function createCrystal(x, y) {
   });
   return body;
 }
-
 function createPortalPair(x, y) {
   const portalA = Bodies.circle(x - 50, y, 20, {
     render: {
@@ -1174,7 +1008,6 @@ function createPortalPair(x, y) {
   });
   Composite.add(engine.world, [portalA, portalB]);
 }
-
 function createFan(x, y) {
   const base = Bodies.rectangle(x, y, 40, 60, {
     isStatic: true,
@@ -1210,7 +1043,6 @@ function createFan(x, y) {
   Composite.add(engine.world, [base, blade, pivot]);
   return base;
 }
-
 function createCloud(x, y) {
   const group = Body.nextGroup(true);
   const circles = [];
@@ -1241,7 +1073,6 @@ function createCloud(x, y) {
   }
   return circles[0];
 }
-
 function createLightning(x, y) {
   const segments = 12;
   const segmentLength = 15;
@@ -1291,7 +1122,7 @@ function createLightning(x, y) {
     for (let j = 0; j < 2; j++) {
       const particle = Bodies.circle(body.position.x + (Math.random() - 0.5) * 10, body.position.y + (Math.random() - 0.5) * 10, 2, {
         render: {
-          fillStyle: '#ffffff80'
+          fillStyle: '#ffffff'
         },
         collisionFilter: {
           group
@@ -1309,7 +1140,6 @@ function createLightning(x, y) {
     });
   }, 1000);
 }
-
 function createBomb(x, y) {
   const body = Bodies.circle(x, y, 25, {
     label: 'bomb',
@@ -1325,7 +1155,6 @@ function createBomb(x, y) {
   }, 3000);
   return body;
 }
-
 function createSpinningBlade(x, y) {
   const blade = Bodies.rectangle(x, y, 100, 10, {
     render: {
@@ -1355,7 +1184,6 @@ function createSpinningBlade(x, y) {
   });
   Composite.add(engine.world, [blade, pivot, constraint]);
 }
-
 function createTrampoline(x, y) {
   const body = Bodies.rectangle(x, y, 100, 20, {
     render: {
@@ -1364,7 +1192,6 @@ function createTrampoline(x, y) {
   });
   return body;
 }
-
 function createAntiGravityField(x, y) {
   const body = Bodies.circle(x, y, 20, {
     render: {
@@ -1373,7 +1200,6 @@ function createAntiGravityField(x, y) {
   });
   return body;
 }
-
 function createBlackHole(x, y) {
   const body = Bodies.circle(x, y, 20, {
     render: {
@@ -1382,7 +1208,6 @@ function createBlackHole(x, y) {
   });
   return body;
 }
-
 function createForceField(x, y) {
   const body = Bodies.circle(x, y, 20, {
     render: {
@@ -1391,7 +1216,6 @@ function createForceField(x, y) {
   });
   return body;
 }
-
 function createExplosion(x, y) {
   const particles = 50;
   const radius = 600;
@@ -1444,7 +1268,6 @@ function createExplosion(x, y) {
     }
   });
 }
-
 function clearObjects() {
   const bodies = Composite.allBodies(engine.world);
   const constraints = Composite.allConstraints(engine.world);
@@ -1461,7 +1284,6 @@ function clearObjects() {
   });
   recreateMouseConstraint();
 }
-
 function createLiquidParticles(x, y, count) {
   const group = Body.nextGroup(true);
   const particles = [];
@@ -1518,7 +1340,6 @@ function createLiquidParticles(x, y, count) {
     });
   });
 }
-
 function createHuman(x, y) {
   const group = Body.nextGroup(true);
   const head = Bodies.circle(x, y - 30, 15, {
@@ -1751,7 +1572,6 @@ function createHuman(x, y) {
   });
   Composite.add(engine.world, [...allParts, ...constraints]);
 }
-
 function createLightningBolt(x, y) {
   const worldPos = Matter.Vector.create(x / render.options.pixelRatio, y / render.options.pixelRatio);
   const zigs = 8;
@@ -1760,23 +1580,10 @@ function createLightningBolt(x, y) {
   let prevX = worldPos.x;
   let prevY = worldPos.y;
   const group = Body.nextGroup(true);
-  const points = [{
-    x,
-    y
-  }];
-  for (let i = 1; i <= zigs; i++) {
-    points.push({
-      x: x + (Math.random() - 0.5) * 30,
-      y: y + i * zigLength
-    });
-  }
-  for (let i = 0; i < points.length - 1; i++) {
-    const start = points[i];
-    const end = points[i + 1];
-    const angle = Math.atan2(end.y - start.y, end.x - start.x);
-    const length = Vector.magnitude(Vector.sub(end, start));
-    const body = Bodies.rectangle((start.x + end.x) / 2, (start.y + end.y) / 2, length, zigWidth, {
-      angle: angle,
+  for (let i = 0; i < zigs; i++) {
+    const offsetX = (Math.random() - 0.5) * 30;
+    const nextY = prevY + zigLength;
+    const segment = Bodies.rectangle((prevX + offsetX) / 2, (prevY + nextY) / 2, Math.sqrt(Math.pow(offsetX, 2) + Math.pow(zigLength, 2)), zigWidth, {
       render: {
         fillStyle: '#ffff00',
         strokeStyle: '#ffffff',
@@ -1787,11 +1594,11 @@ function createLightningBolt(x, y) {
       },
       isSensor: true
     });
-    const angle2 = Math.atan2(end.y - start.y, end.x - start.x);
-    Body.rotate(body, angle2);
-    Composite.add(engine.world, body);
+    const angle = Math.atan2(nextY - prevY, offsetX);
+    Body.rotate(segment, angle);
+    Composite.add(engine.world, segment);
     for (let j = 0; j < 3; j++) {
-      const particle = Bodies.circle(body.position.x + (Math.random() - 0.5) * 10, body.position.y + (Math.random() - 0.5) * 10, 2, {
+      const particle = Bodies.circle(segment.position.x + (Math.random() - 0.5) * 10, segment.position.y + (Math.random() - 0.5) * 10, 2, {
         render: {
           fillStyle: '#ffffff80'
         },
@@ -1801,8 +1608,8 @@ function createLightningBolt(x, y) {
       });
       Composite.add(engine.world, particle);
     }
-    prevX += (Math.random() - 0.5) * 40;
-    prevY = end.y;
+    prevX += offsetX;
+    prevY = nextY;
   }
   setTimeout(() => {
     const bodies = Composite.allBodies(engine.world);
@@ -1813,7 +1620,6 @@ function createLightningBolt(x, y) {
     });
   }, 1000);
 }
-
 function createCannon(x, y) {
   const base = Bodies.rectangle(x, y, 60, 30, {
     isStatic: true,
@@ -1868,7 +1674,6 @@ function createCannon(x, y) {
   });
   return base;
 }
-
 function handleCollisions(event) {
   event.pairs.forEach(pair => {
     const {
@@ -1905,7 +1710,6 @@ function handleCollisions(event) {
     }
   });
 }
-
 function handleBeforeUpdate() {
   const bodies = Composite.allBodies(engine.world);
   bodies.forEach(body => {
@@ -1917,14 +1721,12 @@ function handleBeforeUpdate() {
     }
   });
 }
-
 Matter.Events.on(engine, 'collisionStart', handleCollisions);
 Matter.Events.on(engine, 'beforeUpdate', handleBeforeUpdate);
-
 render.canvas.addEventListener('mousedown', event => {
   const type = document.getElementById('effectsSelect').value;
   if (!type) return;
-  let activeEffect = type;
+  activeEffect = type;
   const handleEffect = (x, y) => {
     if (activeEffect === 'lightning_bolt') {
       createLightningBolt(x, y);
@@ -1935,17 +1737,16 @@ render.canvas.addEventListener('mousedown', event => {
     }
   };
   handleEffect(event.clientX, event.clientY);
-  let effectInterval = setInterval(() => {
+  effectInterval = setInterval(() => {
     handleEffect(event.clientX, event.clientY);
   }, activeEffect === 'lightning_bolt' ? 100 : 20);
 });
-
 render.canvas.addEventListener('touchstart', event => {
   event.preventDefault();
   const touch = event.touches[0];
   const type = document.getElementById('effectsSelect').value;
   if (!type) return;
-  let activeEffect = type;
+  activeEffect = type;
   const handleEffect = (x, y) => {
     if (activeEffect === 'lightning_bolt') {
       createLightningBolt(x, y);
@@ -1956,11 +1757,10 @@ render.canvas.addEventListener('touchstart', event => {
     }
   };
   handleEffect(touch.clientX, touch.clientY);
-  let effectInterval = setInterval(() => {
+  effectInterval = setInterval(() => {
     handleEffect(touch.clientX, touch.clientY);
   }, activeEffect === 'lightning_bolt' ? 100 : 20);
 });
-
 render.canvas.addEventListener('touchmove', function (event) {
   event.preventDefault();
   const touch = event.touches[0];
@@ -1969,7 +1769,6 @@ render.canvas.addEventListener('touchmove', function (event) {
 }, {
   passive: false
 });
-
 render.canvas.addEventListener('touchend', event => {
   event.preventDefault();
   if (effectInterval) {
@@ -1978,7 +1777,6 @@ render.canvas.addEventListener('touchend', event => {
     activeEffect = null;
   }
 });
-
 render.canvas.addEventListener('mousemove', event => {
   if (effectInterval) {
     const type = document.getElementById('effectsSelect').value;
@@ -1991,7 +1789,6 @@ render.canvas.addEventListener('mousemove', event => {
     }
   }
 });
-
 render.canvas.addEventListener('mouseup', () => {
   if (effectInterval) {
     clearInterval(effectInterval);
@@ -1999,7 +1796,6 @@ render.canvas.addEventListener('mouseup', () => {
     activeEffect = null;
   }
 });
-
 render.canvas.addEventListener('mouseleave', () => {
   if (effectInterval) {
     clearInterval(effectInterval);
@@ -2007,7 +1803,6 @@ render.canvas.addEventListener('mouseleave', () => {
     activeEffect = null;
   }
 });
-
 Matter.Events.on(mouseConstraint, 'enddrag', function (event) {
   if (event.body) {
     const mousePos = event.mouse.position;
@@ -2019,7 +1814,6 @@ Matter.Events.on(mouseConstraint, 'enddrag', function (event) {
     });
   }
 });
-
 render.canvas.addEventListener('contextmenu', event => {
   event.preventDefault();
   const bodies = Composite.allBodies(engine.world);
@@ -2033,158 +1827,42 @@ render.canvas.addEventListener('contextmenu', event => {
     }
   });
 });
-
-let lastTime = performance.now();
-let frameCount = 0;
-let fps = 60;
-
-function updateFPS() {
-  const now = performance.now();
-  frameCount++;
-  
-  if (now - lastTime >= 1000) {
-    fps = Math.round(frameCount * 1000 / (now - lastTime));
-    document.getElementById('fps').textContent = `FPS: ${fps}`;
-    frameCount = 0;
-    lastTime = now;
-  }
-  
-  if (fps < 30 && engine.timing.timeScale > 0.8) {
-    engine.timing.timeScale *= 0.9;
-  } else if (fps > 45 && engine.timing.timeScale < 1) {
-    engine.timing.timeScale = Math.min(1, engine.timing.timeScale * 1.1);
-  }
-  
-  requestAnimationFrame(updateFPS);
-}
-updateFPS();
-
-let isDarkTheme = true;
-
-function toggleTheme() {
-  document.body.classList.toggle('light-theme');
-  isDarkTheme = !isDarkTheme;
-  
-  render.options.background = isDarkTheme ? '#1a1a1a' : '#f5f5f5';
-  
-  createThemeChangeParticles();
-}
-
-function createThemeChangeParticles() {
-  const container = document.querySelector('.particles-container');
-  container.innerHTML = '';
-  
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    const size = Math.random() * 10 + 5;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    
-    particle.style.left = Math.random() * window.innerWidth + 'px';
-    particle.style.top = Math.random() * window.innerHeight + 'px';
-    
-    particle.style.opacity = Math.random() * 0.5 + 0.2;
-    
-    const duration = Math.random() * 2 + 1;
-    particle.style.animation = `float ${duration}s ease-out forwards`;
-    
-    container.appendChild(particle);
-    
-    setTimeout(() => {
-      particle.remove();
-    }, duration * 1000);
-  }
-}
-
-const tooltip = document.querySelector('.tooltip');
-function showTooltip(text, x, y) {
-  tooltip.textContent = text;
-  tooltip.style.left = (x + 10) + 'px';
-  tooltip.style.top = (y - 30) + 'px';
-  tooltip.style.opacity = 1;
-}
-
-function hideTooltip() {
-  tooltip.style.opacity = 0;
-}
-
-render.canvas.addEventListener('mousemove', (event) => {
-  if (document.getElementById('objectSelect').value) {
-    showTooltip('Click to spawn', event.clientX, event.clientY);
-  } else {
-    hideTooltip();
-  }
-});
-
-render.canvas.addEventListener('mouseout', hideTooltip);
-
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-if (isMobile) {
-  const controls = document.getElementById('controls');
-  controls.style.width = '180px';
-  controls.style.transform = 'translateX(-160px)';
-  
-  const showHideTab = document.createElement('div');
-  showHideTab.style.position = 'absolute';
-  showHideTab.style.right = '-20px';
-  showHideTab.style.top = '50%';
-  showHideTab.style.width = '20px';
-  showHideTab.style.height = '40px';
-  showHideTab.style.background = '#4CAF50';
-  showHideTab.style.borderRadius = '0 5px 5px 0';
-  showHideTab.style.cursor = 'pointer';
-  showHideTab.innerHTML = '&raquo;';
-  showHideTab.style.display = 'flex';
-  showHideTab.style.alignItems = 'center';
-  showHideTab.style.justifyContent = 'center';
-  
-  controls.appendChild(showHideTab);
-  
-  let controlsVisible = false;
-  showHideTab.addEventListener('click', () => {
-    controlsVisible = !controlsVisible;
-    controls.style.transform = controlsVisible ? 'translateX(0)' : 'translateX(-160px)';
-    showHideTab.innerHTML = controlsVisible ? '&laquo;' : '&raquo;';
-  });
-}
-
 window.addEventListener('resize', () => {
   render.canvas.width = window.innerWidth;
   render.canvas.height = window.innerHeight;
   render.options.width = window.innerWidth;
   render.options.height = window.innerHeight;
   Render.setPixelRatio(render, window.devicePixelRatio || 1);
-  
-  Composite.clear(engine.world, false, true);
-  Composite.add(engine.world, [
-    Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 30, window.innerWidth, 60, {
-      isStatic: true, restitution: 0.4, friction: 0.8
-    }),
-    Bodies.rectangle(window.innerWidth / 2, -30, window.innerWidth, 60, {
-      isStatic: true, restitution: 0.4, friction: 0.8
-    }),
-    Bodies.rectangle(-30, window.innerHeight / 2, 60, window.innerHeight, {
-      isStatic: true, restitution: 0.4, friction: 0.8
-    }),
-    Bodies.rectangle(window.innerWidth + 30, window.innerHeight / 2, 60, window.innerHeight, {
-      isStatic: true, restitution: 0.4, friction: 0.8
-    })
-  ]);
-  
-  recreateMouseConstraint();
+  const walls = Composite.allBodies(engine.world).filter(body => body.isStatic);
+  walls.forEach(wall => {
+    if (wall.position.x > window.innerWidth / 2) {
+      Body.setPosition(wall, {
+        x: window.innerWidth + 30,
+        y: wall.position.y
+      });
+    }
+    if (wall.position.y > window.innerHeight / 2) {
+      Body.setPosition(wall, {
+        x: wall.position.x,
+        y: window.innerHeight + 30
+      });
+    }
+  });
 });
-
+let activeEffect = null;
+let effectInterval = null;
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+render.canvas.style.pointerEvents = 'auto';
+mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+Mouse.setElement(mouse, render.canvas);
 function recreateMouseConstraint() {
   if (mouseConstraint) {
     Matter.Events.off(mouseConstraint);
+    Matter.Events.off(engine, 'collisionStart', handleCollisions);
+    Matter.Events.off(engine, 'beforeUpdate', handleBeforeUpdate);
     Composite.remove(engine.world, mouseConstraint);
   }
-  
-  mouse = Mouse.create(render.canvas);
-  render.mouse = mouse;
-  
   mouseConstraint = MouseConstraint.create(engine, {
     mouse: mouse,
     constraint: {
@@ -2194,55 +1872,16 @@ function recreateMouseConstraint() {
       },
       angularStiffness: 0.1,
       damping: 0.1
+    },
+    collisionFilter: {
+      mask: 0xFFFFFFFF
     }
   });
-  
   Composite.add(engine.world, mouseConstraint);
-  
   Matter.Events.on(engine, 'collisionStart', handleCollisions);
   Matter.Events.on(engine, 'beforeUpdate', handleBeforeUpdate);
 }
-
-setInterval(recreateMouseConstraint, 3000);
-
-window.addEventListener('load', () => {
-  showUpdateNotes();
-  if (isMobile) {
-    alert('Tip: Tap the green tab on the left to access controls');
-  }
-  
-  createThemeChangeParticles();
-});
-
-function showUpdateNotes() {
-  if (hasSeenUpdateNotes) return;
-  const overlay = document.createElement('div');
-  overlay.className = 'modal-overlay';
-  const modal = document.createElement('div');
-  modal.id = 'updateNotes';
-  modal.innerHTML = `
-      <h2>📝 Latest Updates</h2>
-      <ul>
-          <li>✨ Added search functionality for objects</li>
-          <li>🎨 Modernized UI design</li>
-          <li>🔍 Improved search box interface</li>
-          <li>🎮 Enhanced effects selection</li>
-          <li>⚡ Added new physics effects</li>
-      </ul>
-      <button onclick="closeUpdateNotes()">Got it!</button>
-  `;
-  document.body.appendChild(overlay);
-  document.body.appendChild(modal);
-  hasSeenUpdateNotes = true;
-}
-
-function closeUpdateNotes() {
-  const modal = document.getElementById('updateNotes');
-  const overlay = document.querySelector('.modal-overlay');
-  if (modal) modal.remove();
-  if (overlay) overlay.remove();
-}
-
+setInterval(recreateMouseConstraint, 5000);
 function filterObjects() {
   const searchTerm = document.getElementById('searchBox').value.toLowerCase().trim();
   const select = document.getElementById('objectSelect');
@@ -2268,7 +1907,6 @@ function filterObjects() {
     searchResults.style.display = 'none';
   }
 }
-
 document.getElementById('searchBox').addEventListener('input', filterObjects);
 document.getElementById('searchBox').addEventListener('keyup', filterObjects);
 document.getElementById('searchBox').addEventListener('change', filterObjects);
@@ -2280,7 +1918,6 @@ document.getElementById('searchResults').addEventListener('click', e => {
     document.getElementById('searchBox').value = '';
   }
 });
-
 document.addEventListener('click', e => {
   const searchResults = document.getElementById('searchResults');
   const searchBox = document.getElementById('searchBox');
@@ -2288,7 +1925,6 @@ document.addEventListener('click', e => {
     searchResults.style.display = 'none';
   }
 });
-
 document.querySelectorAll('select').forEach(select => {
   select.addEventListener('focus', e => {
     e.target.style.transform = 'translateY(-2px)';
@@ -2303,30 +1939,35 @@ document.querySelectorAll('select').forEach(select => {
       e.target.style.backgroundColor = 'rgba(30,30,30,0.95)';
     }, 200);
   });
+});
+function showUpdateNotes() {
+  if (hasSeenUpdateNotes) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  const modal = document.createElement('div');
+  modal.id = 'updateNotes';
+  modal.innerHTML = `
+      <h2>📝 Latest Updates</h2>
+      <ul>
+          <li>✨ Added search functionality for objects</li>
+          <li>🎨 Modernized UI design</li>
+          <li>🔍 Improved search box interface</li>
+          <li>🎮 Enhanced effects selection</li>
+          <li>⚡ Added new physics effects</li>
+      </ul>
+      <button onclick="closeUpdateNotes()">Got it!</button>
+  `;
+  document.body.appendChild(overlay);
+  document.body.appendChild(modal);
+  hasSeenUpdateNotes = true;
 }
-
-function addAmbientParticles() {
-  if (Composite.allBodies(engine.world).length > 100) return; 
-  
-  const x = Math.random() * window.innerWidth;
-  const y = -20;
-  
-  const particle = Bodies.circle(x, y, Math.random() * 3 + 1, {
-    render: {
-      fillStyle: isDarkTheme ? '#ffffff10' : '#00000010'
-    },
-    frictionAir: 0.01,
-    density: 0.0001,
-    lifespan: 8000
-  });
-  
-  Composite.add(engine.world, particle);
-  
-  setTimeout(() => {
-    Composite.remove(engine.world, particle);
-  }, 8000);
+function closeUpdateNotes() {
+  const modal = document.getElementById('updateNotes');
+  const overlay = document.querySelector('.modal-overlay');
+  if (modal) modal.remove();
+  if (overlay) overlay.remove();
 }
-
-setInterval(addAmbientParticles, 2000);
-</script>
+window.addEventListener('load', () => {
+  showUpdateNotes();
+});</script>
 </body></html>
